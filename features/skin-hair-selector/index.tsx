@@ -32,7 +32,7 @@ export function SkinHairSelector() {
           </h2>
           <p className="text-lg text-slate-600">
             Checkout the best products according to your needs. Need more help?
-            Consult a dermatologist at just ₹299/-
+            Consult a dermatologist at just 500/-
           </p>
         </div>
 

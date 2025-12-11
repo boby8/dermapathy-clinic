@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    text: "Dr. [Name] is amazing! My acne reduced drastically in just 2 sessions.",
+    text: "Dr. Isha Singh is amazing! My acne reduced drastically in just 2 sessions.",
     author: "Priya S.",
   },
   {
@@ -15,9 +17,50 @@ const testimonials = [
     text: "My hair fall stopped after PRP sessions. Highly recommended.",
     author: "Neha R.",
   },
+  {
+    text: "Excellent service and results. The team is very professional and caring.",
+    author: "Riya M.",
+  },
+  {
+    text: "Got amazing results for my skin pigmentation. Highly satisfied!",
+    author: "Sneha P.",
+  },
+  {
+    text: "Best dermatologist in town. Very knowledgeable and patient-friendly.",
+    author: "Ananya K.",
+  },
 ];
 
 export function TestimonialsSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5; // Adjust speed here (lower = slower)
+
+    const scroll = () => {
+      scrollPosition += scrollSpeed;
+      const maxScroll =
+        scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+      if (scrollPosition >= maxScroll) {
+        scrollPosition = 0; // Reset to start for infinite loop
+      }
+
+      scrollContainer.scrollLeft = scrollPosition;
+    };
+
+    const interval = setInterval(scroll, 16); // ~60fps
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Duplicate testimonials for seamless loop
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
+
   return (
     <section className="bg-gradient-to-b from-white to-slate-50 py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,23 +72,43 @@ export function TestimonialsSection() {
             What Our Patients Say
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="group border-2 border-slate-100 transition-all duration-300 hover:border-sky-200 hover:shadow-xl"
-            >
-              <CardContent className="pt-6">
-                <div className="mb-4 text-3xl text-sky-200">&ldquo;</div>
-                <p className="mb-6 leading-relaxed text-slate-600">
-                  {testimonial.text}
-                </p>
-                <p className="font-bold text-slate-900">
-                  – {testimonial.author}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+
+        {/* Horizontal Scrolling Container */}
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-hidden scrollbar-hide"
+            style={{
+              scrollBehavior: "auto",
+            }}
+          >
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex-shrink-0 w-full md:w-[400px]"
+              >
+                <Card className="h-full border-2 border-slate-100 bg-gradient-to-br from-white to-slate-50 shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="mb-4 text-4xl text-sky-200">&ldquo;</div>
+                    <p className="mb-6 leading-relaxed text-slate-600 text-lg">
+                      {testimonial.text}
+                    </p>
+                    <p className="font-bold text-slate-900 text-base">
+                      – {testimonial.author}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Gradient fade on edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent pointer-events-none"></div>
         </div>
       </div>
     </section>

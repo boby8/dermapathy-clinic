@@ -107,31 +107,70 @@ export default function About() {
           </motion.div>
         </div>
 
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">Core Values</h2>
-        </div>
+        {/* Core Values Section */}
+        <div className="relative">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-50/50 to-transparent rounded-3xl"></div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {values.map((value, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="rounded-lg border bg-white p-6 text-center shadow-sm"
-            >
-              <div className="mb-4 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                  <value.icon className="h-8 w-8" />
-                </div>
-              </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
-                {value.title}
-              </h3>
-              <p className="text-gray-600">{value.description}</p>
-            </motion.div>
-          ))}
+          <div className="relative mb-12 text-center">
+            <div className="mb-3 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
+              Our Foundation
+            </div>
+            <h2 className="mb-4 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-4xl font-extrabold text-transparent">
+              Core Values
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              The principles that guide everything we do at Dermapathy
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {values.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative"
+                >
+                  <div className="relative h-full overflow-hidden rounded-2xl border-2 border-slate-100 bg-gradient-to-br from-white to-slate-50 p-8 text-center shadow-lg">
+                    {/* Decorative corner elements */}
+                    <div className="absolute top-0 right-0 h-20 w-20 bg-gradient-to-br from-sky-50/50 to-transparent rounded-bl-full"></div>
+                    <div className="absolute bottom-0 left-0 h-20 w-20 bg-gradient-to-tr from-cyan-50/50 to-transparent rounded-tr-full"></div>
+
+                    {/* Icon container with modern styling */}
+                    <div className="relative mb-6 flex justify-center">
+                      <div className="relative">
+                        {/* Outer glow ring */}
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-400/20 to-cyan-400/20 blur-xl"></div>
+
+                        {/* Icon background with gradient */}
+                        <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 via-sky-50 to-cyan-100 shadow-lg">
+                          <Icon className="h-10 w-10 text-sky-600" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <h3 className="mb-3 text-xl font-bold text-slate-900">
+                        {value.title}
+                      </h3>
+                      <p className="leading-relaxed text-slate-600">
+                        {value.description}
+                      </p>
+                    </div>
+
+                    {/* Bottom accent line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 to-cyan-500"></div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
