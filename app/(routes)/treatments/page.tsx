@@ -1,10 +1,10 @@
-import Home from "@/features/home";
+import Treatments from "@/features/treatments";
 import { ErrorBoundary } from "@/components/error-boundary";
 
-export default function HomePage() {
+export default function TreatmentsPage() {
   return (
     <ErrorBoundary>
-      <Home />
+      <Treatments />
     </ErrorBoundary>
   );
 }

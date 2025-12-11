@@ -1,10 +1,10 @@
-import Home from "@/features/home";
+import Gallery from "@/features/gallery";
 import { ErrorBoundary } from "@/components/error-boundary";
 
-export default function HomePage() {
+export default function GalleryPage() {
   return (
     <ErrorBoundary>
-      <Home />
+      <Gallery />
     </ErrorBoundary>
   );
 }

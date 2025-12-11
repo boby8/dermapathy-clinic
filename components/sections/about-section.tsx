@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Heart, Award, Users, Shield } from "lucide-react";
 
-export default function AboutPage() {
+export function AboutSection() {
   const values = [
     {
       icon: Heart,
