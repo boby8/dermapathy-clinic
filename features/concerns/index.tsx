@@ -20,13 +20,17 @@ export function ConcernsSection() {
   const selected = allConcerns.find((c) => c.id === selectedConcern);
 
   return (
-    <section className="bg-white py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-20">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(14,165,233,0.05),transparent_50%)]"></div>
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">
+          <div className="mb-3 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
+            Find Solutions
+          </div>
+          <h2 className="mb-4 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-4xl font-extrabold text-transparent">
             Concerns Related to Skin & Hair
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-slate-600">
             Select your concern to find the best treatment solutions
           </p>
         </div>
@@ -42,10 +46,10 @@ export function ConcernsSection() {
               {skinConcerns.map((concern) => (
                 <Card
                   key={concern.id}
-                  className={`cursor-pointer transition-all hover:shadow-lg ${
+                  className={`group cursor-pointer border-2 transition-all duration-300 hover:shadow-xl ${
                     selectedConcern === concern.id
-                      ? "border-2 border-primary shadow-md"
-                      : ""
+                      ? "border-sky-500 bg-gradient-to-br from-sky-50 to-cyan-50 shadow-lg ring-2 ring-sky-200"
+                      : "border-slate-100 hover:border-sky-200"
                   }`}
                   onClick={() => setSelectedConcern(concern.id)}
                 >
@@ -86,10 +90,10 @@ export function ConcernsSection() {
               {hairConcerns.map((concern) => (
                 <Card
                   key={concern.id}
-                  className={`cursor-pointer transition-all hover:shadow-lg ${
+                  className={`group cursor-pointer border-2 transition-all duration-300 hover:shadow-xl ${
                     selectedConcern === concern.id
-                      ? "border-2 border-primary shadow-md"
-                      : ""
+                      ? "border-sky-500 bg-gradient-to-br from-sky-50 to-cyan-50 shadow-lg ring-2 ring-sky-200"
+                      : "border-slate-100 hover:border-sky-200"
                   }`}
                   onClick={() => setSelectedConcern(concern.id)}
                 >

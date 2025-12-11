@@ -24,9 +24,9 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/60">
+    <nav className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-md supports-backdrop-filter:bg-white/80 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image
               src="/clinic-logo.png"
@@ -48,10 +48,10 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "text-sm font-medium transition-colors",
+                    "text-sm font-medium transition-all duration-200",
                     isActive
-                      ? "text-primary border-b-2 border-primary pb-1"
-                      : "text-gray-700 hover:text-primary"
+                      ? "text-sky-600 border-b-2 border-sky-600 pb-1 font-semibold"
+                      : "text-slate-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-200 pb-1"
                   )}
                 >
                   {item.label}

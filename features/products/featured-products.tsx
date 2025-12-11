@@ -27,13 +27,16 @@ export function FeaturedProducts() {
   };
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-gradient-to-b from-white to-slate-50 py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">
+          <div className="mb-3 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
+            Shop Now
+          </div>
+          <h2 className="mb-4 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-4xl font-extrabold text-transparent">
             Featured Products
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-slate-600">
             Dermatologist-approved products for your skin and hair
           </p>
         </div>
@@ -52,9 +55,9 @@ export function FeaturedProducts() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group flex h-full flex-col transition-shadow hover:shadow-lg">
-                  <CardHeader className="relative flex-shrink-0">
-                    <div className="relative mb-4 aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
+                <Card className="group flex h-full flex-col overflow-hidden border-2 border-slate-100 transition-all duration-300 hover:border-sky-200 hover:shadow-xl">
+                  <CardHeader className="relative flex-shrink-0 bg-gradient-to-br from-slate-50 to-white p-4">
+                    <div className="relative mb-4 aspect-square w-full overflow-hidden rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 shadow-inner">
                       <ProductImage src={product.image} alt={product.name} />
                       {discount > 0 && (
                         <div className="absolute right-2 top-2 flex items-center gap-1 rounded-full bg-red-500 px-2 py-1 text-xs font-semibold text-white">

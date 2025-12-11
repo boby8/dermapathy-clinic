@@ -37,13 +37,16 @@ const treatments = [
 
 export function TreatmentsOverviewSection() {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-gradient-to-b from-white to-slate-50 py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">
+          <div className="mb-3 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
+            Our Services
+          </div>
+          <h2 className="mb-4 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-4xl font-extrabold text-transparent">
             Our Treatments
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-slate-600">
             Comprehensive solutions for all your skin and hair concerns
           </p>
         </div>
@@ -51,18 +54,27 @@ export function TreatmentsOverviewSection() {
           {treatments.map((treatment, index) => {
             const Icon = treatment.icon;
             return (
-              <Card key={index} className="transition-shadow hover:shadow-lg">
+              <Card
+                key={index}
+                className="group border-2 border-slate-100 transition-all duration-300 hover:border-sky-200 hover:shadow-xl"
+              >
                 <CardHeader>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
-                    <Icon className="h-6 w-6" />
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-sky-100 to-cyan-100 text-sky-600 transition-transform duration-300 group-hover:scale-110 group-hover:from-sky-200 group-hover:to-cyan-200">
+                    <Icon className="h-7 w-7" />
                   </div>
-                  <CardTitle>{treatment.title}</CardTitle>
+                  <CardTitle className="text-slate-900">
+                    {treatment.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="mb-4">
+                  <CardDescription className="mb-4 text-slate-600">
                     {treatment.description}
                   </CardDescription>
-                  <Button variant="link" className="p-0" asChild>
+                  <Button
+                    variant="link"
+                    className="p-0 text-sky-600 hover:text-sky-700"
+                    asChild
+                  >
                     <Link href="/treatments">Learn More →</Link>
                   </Button>
                 </CardContent>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -19,15 +20,19 @@ export function SkinHairSelector() {
   const [selectedHairType, setSelectedHairType] = useState<string | null>(null);
 
   return (
-    <section className="bg-gradient-to-br from-blue-50 to-white py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-cyan-50/50 to-white py-20">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(14,165,233,0.08),transparent_50%)]"></div>
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">
+          <div className="mb-3 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
+            Personalized Care
+          </div>
+          <h2 className="mb-4 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-4xl font-extrabold text-transparent">
             Tailored Skin & Hair Care Solutions
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-slate-600">
             Checkout the best products according to your needs. Need more help?
-            Consult a dermatologist at just ₹249/-
+            Consult a dermatologist at just ₹299/-
           </p>
         </div>
 
@@ -42,10 +47,10 @@ export function SkinHairSelector() {
               {skinTypes.map((type) => (
                 <Card
                   key={type.id}
-                  className={`cursor-pointer transition-all hover:shadow-lg ${
+                  className={`group cursor-pointer border-2 transition-all duration-300 hover:shadow-xl ${
                     selectedSkinType === type.id
-                      ? "border-2 border-primary shadow-md"
-                      : ""
+                      ? "border-sky-500 bg-gradient-to-br from-sky-50 to-cyan-50 shadow-lg ring-2 ring-sky-200"
+                      : "border-slate-100 hover:border-sky-200"
                   }`}
                   onClick={() => setSelectedSkinType(type.id)}
                 >
@@ -83,10 +88,10 @@ export function SkinHairSelector() {
               {hairTypes.map((type) => (
                 <Card
                   key={type.id}
-                  className={`cursor-pointer transition-all hover:shadow-lg ${
+                  className={`group cursor-pointer border-2 transition-all duration-300 hover:shadow-xl ${
                     selectedHairType === type.id
-                      ? "border-2 border-primary shadow-md"
-                      : ""
+                      ? "border-sky-500 bg-gradient-to-br from-sky-50 to-cyan-50 shadow-lg ring-2 ring-sky-200"
+                      : "border-slate-100 hover:border-sky-200"
                   }`}
                   onClick={() => setSelectedHairType(type.id)}
                 >
@@ -120,11 +125,17 @@ export function SkinHairSelector() {
           </TabsContent>
         </Tabs>
 
-        <div className="mt-8 text-center">
-          <Button asChild size="lg">
-            <Link href="/appointment">Book Consultation (₹249/-)</Link>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-12 text-center"
+        >
+          <Button asChild size="lg" className="shadow-lg">
+            <Link href="/appointment">Book Consultation (₹299/-)</Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

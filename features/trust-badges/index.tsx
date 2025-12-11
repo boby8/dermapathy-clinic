@@ -5,9 +5,9 @@ import { trustBadges } from "./constants";
 
 export function TrustBadges() {
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-gradient-to-b from-slate-50 to-white py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {trustBadges.map((badge, index) => {
             const Icon = badge.icon;
             return (
@@ -17,17 +17,17 @@ export function TrustBadges() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                className="group text-center"
               >
                 <div className="mb-4 flex justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                    <Icon className="h-8 w-8" />
+                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 to-cyan-100 text-sky-600 shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:from-sky-200 group-hover:to-cyan-200">
+                    <Icon className="h-10 w-10" />
                   </div>
                 </div>
-                <h3 className="mb-2 font-semibold text-gray-900">
-                  {badge.title}
-                </h3>
-                <p className="text-sm text-gray-600">{badge.description}</p>
+                <h3 className="mb-2 font-bold text-slate-900">{badge.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">
+                  {badge.description}
+                </p>
               </motion.div>
             );
           })}
