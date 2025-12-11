@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Heart } from "lucide-react";
 
 export function HeroSection() {
   return (
@@ -42,15 +42,14 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative h-96 lg:h-[500px]"
           >
-            <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-gradient-to-br from-blue-100 to-blue-50">
-              <div className="text-center">
-                <div className="mx-auto mb-4 flex h-32 w-32 items-center justify-center rounded-full bg-blue-500 text-white">
-                  <Heart className="h-16 w-16" />
-                </div>
-                <p className="text-sm text-gray-600">
-                  Doctor Image Placeholder
-                </p>
-              </div>
+            <div className="relative h-full w-full overflow-hidden rounded-lg">
+              <Image
+                src="/dr.png"
+                alt="Doctor"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </motion.div>
         </div>

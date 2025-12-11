@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,7 +7,16 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div>
-            <h3 className="mb-4 text-lg font-bold text-primary">Dermapathy</h3>
+            <Link href="/" className="inline-block">
+              <Image
+                src="/clinic-logo.png"
+                alt="Dermapathy Clinic Logo"
+                width={150}
+                height={50}
+                className="h-12 w-auto object-contain mb-4"
+                unoptimized
+              />
+            </Link>
             <p className="text-sm text-gray-600">
               Advanced skin & hair care clinic providing personalized treatments
               with modern technology.
@@ -38,10 +48,23 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/experts"
+                  className="text-gray-600 hover:text-primary"
+                >
+                  Our Experts
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/gallery"
                   className="text-gray-600 hover:text-primary"
                 >
                   Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-gray-600 hover:text-primary">
+                  Blog
                 </Link>
               </li>
             </ul>
@@ -58,10 +81,13 @@ export function Footer() {
           <div>
             <h4 className="mb-4 font-semibold">Contact</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>+91 9999999999</li>
+              <li>+91 9650821800</li>
+              <li>+91 9140090880</li>
               <li>clinic@example.com</li>
-              <li>123, Skin Care Avenue</li>
-              <li>City, India</li>
+              <li>11 AM - 05 PM</li>
+              <li>1/44 First Floor, opposite Ipsum Diagnostics</li>
+              <li>Vijayant Khand, Gomti Nagar</li>
+              <li>LUCKNOW</li>
             </ul>
           </div>
         </div>

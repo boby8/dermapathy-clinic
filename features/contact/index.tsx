@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { contactInfo } from "./constants";
 
@@ -10,7 +10,7 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      value: contactInfo.phone,
+      value: `${contactInfo.phone}, ${contactInfo.phone2}`,
       delay: 0,
     },
     {
@@ -20,10 +20,16 @@ export default function Contact() {
       delay: 0.1,
     },
     {
+      icon: Clock,
+      title: "Timings",
+      value: contactInfo.timings,
+      delay: 0.2,
+    },
+    {
       icon: MapPin,
       title: "Address",
       value: contactInfo.address,
-      delay: 0.2,
+      delay: 0.3,
     },
   ];
 
@@ -39,7 +45,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {contactCards.map((card, index) => {
             const Icon = card.icon;
             return (
