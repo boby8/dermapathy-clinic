@@ -32,7 +32,7 @@ export function AboutSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h1 className="mb-4 text-4xl font-bold text-gray-900">
-            About Dr. [Name]
+            About Dr. Isha Singh
           </h1>
         </div>
 
