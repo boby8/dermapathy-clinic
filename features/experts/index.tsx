@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Card,
@@ -8,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Users } from "lucide-react";
 import { experts } from "./constants";
 
 export default function Experts() {
@@ -39,10 +39,14 @@ export default function Experts() {
                 <Card className="h-full transition-shadow hover:shadow-lg">
                   <CardHeader>
                     <div className="mb-4 flex justify-center">
-                      <div className="relative h-32 w-32 overflow-hidden rounded-full bg-gradient-to-br from-blue-100 to-blue-50">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <Users className="h-16 w-16 text-blue-600" />
-                        </div>
+                      <div className="relative h-32 w-32 overflow-hidden rounded-full">
+                        <Image
+                          src={expert.image}
+                          alt={expert.name}
+                          fill
+                          className="object-cover"
+                          sizes="128px"
+                        />
                       </div>
                     </div>
                     <CardTitle className="text-center">{expert.name}</CardTitle>
