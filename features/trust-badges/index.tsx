@@ -5,7 +5,7 @@ import { trustBadges } from "./constants";
 
 export function TrustBadges() {
   return (
-    <section className="bg-gradient-to-b from-slate-50 to-white py-16">
+    <section className="bg-white py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {trustBadges.map((badge, index) => {

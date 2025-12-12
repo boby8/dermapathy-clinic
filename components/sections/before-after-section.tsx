@@ -12,6 +12,7 @@ const previewImages = [
       "https://i.pinimg.com/736x/13/1b/e9/131be993259eeceb35a499f02377a389.jpg",
     after:
       "https://i.pinimg.com/736x/54/29/02/542902c998be3502c7181e724cd6a388.jpg",
+    label: "High Density Grafting",
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const previewImages = [
       "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=600&fit=crop",
     after:
       "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&h=600&fit=crop",
+    label: "Natural Hairline",
   },
   {
     id: 3,
@@ -26,12 +28,37 @@ const previewImages = [
       "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=600&h=600&fit=crop",
     after:
       "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=600&fit=crop",
+    label: "Seamless Integration",
+  },
+  {
+    id: 4,
+    before:
+      "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&h=600&fit=crop",
+    after:
+      "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=600&fit=crop",
+    label: "Advanced Recovery",
+  },
+  {
+    id: 5,
+    before:
+      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=600&fit=crop",
+    after:
+      "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=600&h=600&fit=crop",
+    label: "Youthful Look",
+  },
+  {
+    id: 6,
+    before:
+      "https://i.pinimg.com/736x/13/1b/e9/131be993259eeceb35a499f02377a389.jpg",
+    after:
+      "https://i.pinimg.com/736x/54/29/02/542902c998be3502c7181e724cd6a388.jpg",
+    label: "Full Coverage",
   },
 ];
 
 export function BeforeAfterSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white py-20">
+    <section className="relative overflow-hidden bg-white py-12">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.03),transparent_70%)]"></div>
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
@@ -45,7 +72,7 @@ export function BeforeAfterSection() {
             Visible results achieved with expert dermatology care.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {previewImages.map((item, index) => (
             <motion.div
               key={item.id}
@@ -61,7 +88,7 @@ export function BeforeAfterSection() {
                   alt="Before treatment"
                   fill
                   className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-0"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="absolute inset-0 opacity-0 transition-all duration-500 group-hover:opacity-100">
@@ -70,24 +97,26 @@ export function BeforeAfterSection() {
                   alt="After treatment"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
               <div className="absolute bottom-0 left-0 right-0 translate-y-full p-6 text-center text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                <div className="mb-2 text-sm font-semibold uppercase tracking-wider">
-                  Before → After
+                <div className="mb-2 text-base font-bold uppercase tracking-wider">
+                  {item.label}
                 </div>
-                <div className="text-xs opacity-90">
-                  Swipe to see transformation
-                </div>
+                <div className="text-xs opacity-90">Before → After</div>
               </div>
-              <div className="absolute top-4 right-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-900 shadow-lg">
-                {index + 1}
+              <div className="absolute top-4 left-4 rounded-lg bg-white/95 px-3 py-1.5 text-xs font-bold text-slate-900 shadow-lg backdrop-blur-sm">
+                {item.label}
               </div>
             </motion.div>
           ))}
         </div>
+        <p className="mt-8 text-center text-sm text-slate-500 italic">
+          *All before after images are used after seeking permission from the
+          patients.
+        </p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

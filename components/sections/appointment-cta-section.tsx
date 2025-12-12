@@ -28,11 +28,10 @@ export function AppointmentCTASection() {
             </div>
           </div>
           <h2 className="mb-6 text-4xl font-extrabold leading-tight lg:text-5xl">
-            Ready for Healthy Skin & Hair?
+            Book Your Free Consultation
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-white/90 lg:text-xl">
-            Book your consultation today and take the first step towards
-            healthier, glowing skin and hair.
+            Fill the form below to get a personalized, confidential assessment and speak directly with our expert team.
           </p>
           <Button
             asChild

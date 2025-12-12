@@ -37,8 +37,9 @@ const treatments = [
 
 export function TreatmentsOverviewSection() {
   return (
-    <section className="bg-gradient-to-b from-white to-slate-50 py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-cyan-50/50 to-white py-12">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(14,165,233,0.08),transparent_50%)]"></div>
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <div className="mb-3 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
             Our Services

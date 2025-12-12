@@ -27,7 +27,7 @@ export function FeaturedProducts() {
   };
 
   return (
-    <section className="bg-gradient-to-b from-white to-slate-50 py-20">
+    <section className="bg-white py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <div className="mb-3 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">

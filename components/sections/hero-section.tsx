@@ -17,14 +17,13 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-4 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
-              Advanced Dermatology Care
+              Expert Dermatology Care
             </div>
             <h1 className="mb-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-4xl font-extrabold leading-tight text-transparent lg:text-6xl">
-              Transforming Skin & Hair With Advanced Dermatology
+              Personalized Skin & Hair Restoration with Rewarding Results
             </h1>
             <p className="mb-8 text-lg leading-relaxed text-slate-600 lg:text-xl">
-              Get personalized, safe, and effective treatments backed by
-              experience and latest technology.
+              Dermapathy, led by renowned dermatologist Dr. Isha Singh, delivers expert, doctor-led treatments with 100% natural-looking results. With extensive clinical experience, we ensure precision, artistry, and long-term satisfaction.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg" className="w-full sm:w-auto">

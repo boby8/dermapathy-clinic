@@ -20,7 +20,7 @@ export function ConcernsSection() {
   const selected = allConcerns.find((c) => c.id === selectedConcern);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-20">
+    <section className="relative overflow-hidden bg-white py-12">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(14,165,233,0.05),transparent_50%)]"></div>
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">

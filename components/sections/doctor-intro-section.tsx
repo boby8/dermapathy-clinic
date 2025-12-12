@@ -12,7 +12,7 @@ export function DoctorIntroSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-white py-20">
+    <section className="relative overflow-hidden bg-white py-12">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(14,165,233,0.05),transparent_50%)]"></div>
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">

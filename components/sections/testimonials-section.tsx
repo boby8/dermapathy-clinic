@@ -6,28 +6,34 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    text: "Dr. Isha Singh is amazing! My acne reduced drastically in just 2 sessions.",
+    text: "Dr. Isha Singh and her team are extremely professional and warm. My post-treatment results have been fantastic!",
     author: "Priya S.",
+    rating: 5,
   },
   {
-    text: "Best clinic for laser hair removal. Very clean and professional.",
+    text: "Excellent service and incredible results. I love the density and natural look.",
     author: "Aditi K.",
+    rating: 5,
   },
   {
-    text: "My hair fall stopped after PRP sessions. Highly recommended.",
+    text: "The experience was seamless from start to finish. My results have surpassed my expectations!",
     author: "Neha R.",
+    rating: 5,
   },
   {
-    text: "Excellent service and results. The team is very professional and caring.",
+    text: "Extremely happy with my progress at Dermapathy. Their expertise and approach are outstanding!",
     author: "Riya M.",
+    rating: 5,
   },
   {
-    text: "Got amazing results for my skin pigmentation. Highly satisfied!",
+    text: "Got amazing results for my skin pigmentation. Highly satisfied with the treatment!",
     author: "Sneha P.",
+    rating: 5,
   },
   {
-    text: "Best dermatologist in town. Very knowledgeable and patient-friendly.",
+    text: "Best dermatologist in town. Very knowledgeable and patient-friendly. Highly recommended!",
     author: "Ananya K.",
+    rating: 5,
   },
 ];
 
@@ -62,8 +68,9 @@ export function TestimonialsSection() {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="bg-gradient-to-b from-white to-slate-50 py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-cyan-50/50 to-white py-12">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(14,165,233,0.08),transparent_50%)]"></div>
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <div className="mb-3 inline-block rounded-full bg-sky-100 px-4 py-1.5 text-sm font-semibold text-sky-700">
             Patient Reviews
@@ -93,6 +100,13 @@ export function TestimonialsSection() {
               >
                 <Card className="h-full border-2 border-slate-100 bg-gradient-to-br from-white to-slate-50 shadow-lg">
                   <CardContent className="p-6">
+                    <div className="mb-4 flex items-center gap-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <span key={i} className="text-yellow-400 text-lg">
+                          ★
+                        </span>
+                      ))}
+                    </div>
                     <div className="mb-4 text-4xl text-sky-200">&ldquo;</div>
                     <p className="mb-6 leading-relaxed text-slate-600 text-lg">
                       {testimonial.text}
@@ -107,8 +121,8 @@ export function TestimonialsSection() {
           </div>
 
           {/* Gradient fade on edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-sky-50 via-sky-50/80 to-transparent pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-sky-50 via-sky-50/80 to-transparent pointer-events-none"></div>
         </div>
       </div>
     </section>
