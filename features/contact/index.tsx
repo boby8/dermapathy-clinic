@@ -77,12 +77,29 @@ export default function Contact() {
         <div className="mx-auto max-w-4xl">
           <Card>
             <CardContent className="p-0">
-              <div className="h-96 w-full bg-gray-200">
-                <div className="flex h-full items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="mx-auto mb-4 h-16 w-16 text-gray-400" />
-                    <p className="text-gray-600">Map Placeholder</p>
-                  </div>
+              <div className="relative h-96 w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.123456789!2d81.0202361!3d26.8665567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be30036c33b61%3A0xf2ac5b8378e8e52e!2sDr.%20Isha%20Singh%27s%20Dermapathy%20Skin%20Clinic!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Dermapathy Skin Clinic Location"
+                  aria-label="Interactive map showing the location of Dermapathy Skin Clinic at 1/44 First Floor, opposite Ipsum Diagnostics, Vijayant Khand, Gomti Nagar, Lucknow"
+                  className="absolute inset-0"
+                />
+                <div className="absolute bottom-4 right-4 z-10">
+                  <a
+                    href="https://www.google.com/maps/place/Dr.+Isha+Singh's+Dermapathy+Skin+Clinic/@26.8663766,81.0081903,16z/data=!4m10!1m2!2m1!1sdermapathy!3m6!1s0x399be30036c33b61:0xf2ac5b8378e8e52e!8m2!3d26.8665567!4d81.0202361!15sCgpkZXJtYXBhdGh5WgwiCmRlcm1hcGF0aHmSAQ1kZXJtYXRob2xvZ2lzdOABAA!16s%2Fg%2F11xzrvf2g_?entry=ttu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-lg bg-white px-4 py-2 text-sm font-medium text-sky-600 shadow-lg hover:bg-sky-50 transition-colors"
+                    aria-label="Open Dermapathy Skin Clinic location in Google Maps"
+                  >
+                    Open in Google Maps
+                  </a>
                 </div>
               </div>
             </CardContent>
