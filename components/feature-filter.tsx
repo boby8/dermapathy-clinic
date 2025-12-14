@@ -5,10 +5,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DoctorIntroSection } from "@/components/sections/doctor-intro-section";
 import { TreatmentsOverviewSection } from "@/components/sections/treatments-overview-section";
 import { BeforeAfterSection } from "@/components/sections/before-after-section";
-import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { AboutSection } from "@/components/sections/about-section";
 
-type FilterOption = "all" | "about" | "treatments" | "gallery" | "testimonials";
+type FilterOption = "all" | "about" | "treatments" | "gallery";
 
 export function FeatureFilter() {
   const [activeTab, setActiveTab] = useState<FilterOption>("all");
@@ -21,7 +20,6 @@ export function FeatureFilter() {
             <DoctorIntroSection />
             <TreatmentsOverviewSection />
             <BeforeAfterSection />
-            <TestimonialsSection />
           </div>
         );
       case "about":
@@ -30,8 +28,6 @@ export function FeatureFilter() {
         return <TreatmentsOverviewSection />;
       case "gallery":
         return <BeforeAfterSection />;
-      case "testimonials":
-        return <TestimonialsSection />;
       default:
         return null;
     }
@@ -45,12 +41,11 @@ export function FeatureFilter() {
         className="w-full"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <TabsList className="mb-8 grid w-full grid-cols-2 md:grid-cols-5">
+          <TabsList className="mb-8 grid w-full grid-cols-2 md:grid-cols-4">
             <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="about">About</TabsTrigger>
             <TabsTrigger value="treatments">Treatments</TabsTrigger>
             <TabsTrigger value="gallery">Gallery</TabsTrigger>
-            <TabsTrigger value="testimonials">Testimonials</TabsTrigger>
           </TabsList>
         </div>
 

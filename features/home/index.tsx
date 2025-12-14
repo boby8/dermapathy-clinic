@@ -5,6 +5,7 @@ import { AppointmentCTASection } from "@/components/sections/appointment-cta-sec
 import { FeatureFilter } from "@/components/feature-filter";
 import { WhyChooseSection } from "@/components/sections/why-choose-section";
 import { FAQSection } from "@/components/sections/faq-section";
+import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { TrustBadges } from "@/features/trust-badges";
 import { SkinHairSelector } from "@/features/skin-hair-selector";
 import { ConcernsSection } from "@/features/concerns";
@@ -20,6 +21,7 @@ export default function Home() {
       <FeaturedProducts />
       <SkinHairSelector />
       <FeatureFilter />
+      <TestimonialsSection />
       <ConcernsSection />
       <NewsSection />
       <FAQSection />
