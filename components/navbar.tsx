@@ -35,7 +35,6 @@ export function Navbar() {
               height={50}
               className="h-12 w-auto object-contain"
               priority
-              unoptimized
             />
           </Link>
 
@@ -68,14 +67,20 @@ export function Navbar() {
             className="md:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? (
+              <X size={24} aria-hidden="true" />
+            ) : (
+              <Menu size={24} aria-hidden="true" />
+            )}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="border-t py-4 md:hidden">
+          <div id="mobile-menu" className="border-t py-4 md:hidden" role="menu">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
@@ -90,6 +95,7 @@ export function Navbar() {
                         : "text-gray-700 hover:text-primary"
                     )}
                     onClick={() => setIsOpen(false)}
+                    role="menuitem"
                   >
                     {item.label}
                   </Link>

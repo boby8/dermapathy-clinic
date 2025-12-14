@@ -14,7 +14,6 @@ export function Footer() {
                 width={150}
                 height={50}
                 className="h-12 w-auto object-contain mb-4"
-                unoptimized
               />
             </Link>
             <p className="text-sm leading-relaxed text-slate-600">
@@ -99,9 +98,33 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-base font-bold text-slate-900">Contact</h4>
             <ul className="space-y-3 text-sm text-slate-600">
-              <li>+91 9650821800</li>
-              <li>+91 9140090880</li>
-              <li>clinic@example.com</li>
+              <li>
+                <a
+                  href="tel:+919650821800"
+                  className="hover:text-sky-600 transition-colors"
+                  aria-label="Call us at +91 9650821800"
+                >
+                  +91 9650821800
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+919140090880"
+                  className="hover:text-sky-600 transition-colors"
+                  aria-label="Call us at +91 9140090880"
+                >
+                  +91 9140090880
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:clinic@example.com"
+                  className="hover:text-sky-600 transition-colors"
+                  aria-label="Email us at clinic@example.com"
+                >
+                  clinic@example.com
+                </a>
+              </li>
               <li>11 AM - 05 PM</li>
               <li>1/44 First Floor, opposite Ipsum Diagnostics</li>
               <li>Vijayant Khand, Gomti Nagar</li>

@@ -73,14 +73,18 @@ export function FAQSection() {
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : index)}
                       className="flex w-full items-center justify-between p-6 text-left"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${index}`}
+                      id={`faq-question-${index}`}
                     >
                       <h3 className="pr-8 text-lg font-semibold text-slate-900">
                         {faq.question}
                       </h3>
                       <ChevronDown
-                        className={`h-5 w-5 flex-shrink-0 text-sky-600 transition-transform duration-300 ${
+                        className={`h-5 w-5 shrink-0 text-sky-600 transition-transform duration-300 ${
                           isOpen ? "rotate-180" : ""
                         }`}
+                        aria-hidden="true"
                       />
                     </button>
                     <AnimatePresence>
@@ -91,6 +95,9 @@ export function FAQSection() {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
+                          id={`faq-answer-${index}`}
+                          role="region"
+                          aria-labelledby={`faq-question-${index}`}
                         >
                           <div className="px-6 pb-6 text-slate-600 leading-relaxed">
                             {faq.answer}
@@ -108,4 +115,3 @@ export function FAQSection() {
     </section>
   );
 }
-

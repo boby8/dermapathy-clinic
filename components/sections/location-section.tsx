@@ -65,12 +65,30 @@ export function LocationSection() {
                 <div className="space-y-4 text-slate-600">
                   <div>
                     <p className="font-semibold text-slate-900">Phone:</p>
-                    <p>+91 9650821800</p>
-                    <p>+91 9140090880</p>
+                    <a
+                      href="tel:+919650821800"
+                      className="block hover:text-sky-600 transition-colors"
+                      aria-label="Call us at +91 9650821800"
+                    >
+                      +91 9650821800
+                    </a>
+                    <a
+                      href="tel:+919140090880"
+                      className="block hover:text-sky-600 transition-colors"
+                      aria-label="Call us at +91 9140090880"
+                    >
+                      +91 9140090880
+                    </a>
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Email:</p>
-                    <p>clinic@example.com</p>
+                    <a
+                      href="mailto:clinic@example.com"
+                      className="block hover:text-sky-600 transition-colors"
+                      aria-label="Email us at clinic@example.com"
+                    >
+                      clinic@example.com
+                    </a>
                   </div>
                 </div>
               </CardContent>
@@ -93,7 +111,9 @@ export function LocationSection() {
                 </div>
               </div>
               <h3 className="mb-2 text-xl font-bold text-slate-900">Timings</h3>
-              <p className="mb-4 text-lg font-semibold text-sky-700">11 AM - 05 PM</p>
+              <p className="mb-4 text-lg font-semibold text-sky-700">
+                11 AM - 05 PM
+              </p>
               <p className="text-sm text-slate-600">Monday to Saturday</p>
             </CardContent>
           </Card>
@@ -114,5 +134,3 @@ export function LocationSection() {
     </section>
   );
 }
-
-
