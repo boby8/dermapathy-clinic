@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { MessageCircle } from "lucide-react";
+import { WhatsAppLink } from "@/components/whatsapp-button";
 
 export function Footer() {
   return (
@@ -98,23 +100,15 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-base font-bold text-slate-900">Contact</h4>
             <ul className="space-y-3 text-sm text-slate-600">
+              <li>+91 9650821800</li>
+              <li>+91 9140090880</li>
               <li>
-                <a
-                  href="tel:+919650821800"
-                  className="hover:text-sky-600 transition-colors"
-                  aria-label="Call us at +91 9650821800"
-                >
-                  +91 9650821800
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+919140090880"
-                  className="hover:text-sky-600 transition-colors"
-                  aria-label="Call us at +91 9140090880"
-                >
-                  +91 9140090880
-                </a>
+                <WhatsAppLink>
+                  <span className="flex items-center gap-2 hover:text-[#25D366] transition-colors cursor-pointer">
+                    <MessageCircle className="h-4 w-4" />
+                    Chat on WhatsApp
+                  </span>
+                </WhatsAppLink>
               </li>
               <li>
                 <a

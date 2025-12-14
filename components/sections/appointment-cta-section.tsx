@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Calendar, Sparkles } from "lucide-react";
+import { Calendar, Sparkles, MessageCircle } from "lucide-react";
+import { WhatsAppLink } from "@/components/whatsapp-button";
 
 export function AppointmentCTASection() {
   return (
@@ -31,18 +32,30 @@ export function AppointmentCTASection() {
             Book Your Free Consultation
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-white/90 lg:text-xl">
-            Fill the form below to get a personalized, confidential assessment and speak directly with our expert team.
+            Fill the form below to get a personalized, confidential assessment
+            and speak directly with our expert team.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-sky-600 shadow-xl hover:bg-white/90 hover:scale-105 hover:shadow-2xl"
-          >
-            <Link href="/appointment">
-              <Calendar className="mr-2 h-5 w-5" />
-              Book Appointment Now
-            </Link>
-          </Button>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-sky-600 shadow-xl hover:bg-white/90 hover:scale-105 hover:shadow-2xl"
+            >
+              <Link href="/appointment">
+                <Calendar className="mr-2 h-5 w-5" />
+                Book Appointment Now
+              </Link>
+            </Button>
+            <WhatsAppLink message="Hello! I'd like to book a consultation. Can you please help me?">
+              <Button
+                size="lg"
+                className="bg-[#25D366] text-white shadow-xl hover:bg-[#20BA5A] hover:scale-105 hover:shadow-2xl"
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Chat on WhatsApp
+              </Button>
+            </WhatsAppLink>
+          </div>
         </motion.div>
       </div>
     </section>

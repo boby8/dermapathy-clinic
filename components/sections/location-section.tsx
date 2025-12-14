@@ -65,20 +65,8 @@ export function LocationSection() {
                 <div className="space-y-4 text-slate-600">
                   <div>
                     <p className="font-semibold text-slate-900">Phone:</p>
-                    <a
-                      href="tel:+919650821800"
-                      className="block hover:text-sky-600 transition-colors"
-                      aria-label="Call us at +91 9650821800"
-                    >
-                      +91 9650821800
-                    </a>
-                    <a
-                      href="tel:+919140090880"
-                      className="block hover:text-sky-600 transition-colors"
-                      aria-label="Call us at +91 9140090880"
-                    >
-                      +91 9140090880
-                    </a>
+                    <p>+91 9650821800</p>
+                    <p>+91 9140090880</p>
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Email:</p>

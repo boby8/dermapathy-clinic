@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { WhatsAppLink } from "@/components/whatsapp-button";
 import { contactInfo } from "./constants";
 
 export default function Contact() {
@@ -14,22 +16,30 @@ export default function Contact() {
       delay: 0,
     },
     {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      value: "Chat with us instantly",
+      delay: 0.1,
+      isWhatsApp: true,
+    },
+    {
       icon: Mail,
       title: "Email",
       value: contactInfo.email,
-      delay: 0.1,
+      delay: 0.2,
+      links: [`mailto:${contactInfo.email}`],
     },
     {
       icon: Clock,
       title: "Timings",
       value: contactInfo.timings,
-      delay: 0.2,
+      delay: 0.3,
     },
     {
       icon: MapPin,
       title: "Address",
       value: contactInfo.address,
-      delay: 0.3,
+      delay: 0.4,
     },
   ];
 
@@ -45,9 +55,12 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
           {contactCards.map((card, index) => {
             const Icon = card.icon;
+            const isWhatsApp = "isWhatsApp" in card && card.isWhatsApp;
+            const hasLinks = "links" in card && card.links;
+
             return (
               <motion.div
                 key={index}
@@ -56,17 +69,47 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: card.delay }}
               >
-                <Card>
+                <Card className="h-full transition-shadow hover:shadow-lg">
                   <CardContent className="pt-6 text-center">
                     <div className="mb-4 flex justify-center">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                      <div
+                        className={`flex h-12 w-12 items-center justify-center rounded-full ${
+                          isWhatsApp
+                            ? "bg-[#25D366] text-white"
+                            : "bg-blue-100 text-blue-600"
+                        }`}
+                      >
                         <Icon className="h-6 w-6" />
                       </div>
                     </div>
                     <h3 className="mb-2 font-semibold text-gray-900">
                       {card.title}
                     </h3>
-                    <p className="text-gray-600">{card.value}</p>
+                    {isWhatsApp ? (
+                      <WhatsAppLink>
+                        <Button
+                          className="mt-2 w-full bg-[#25D366] hover:bg-[#20BA5A] text-white"
+                          size="sm"
+                        >
+                          <MessageCircle className="mr-2 h-4 w-4" />
+                          Chat Now
+                        </Button>
+                      </WhatsAppLink>
+                    ) : card.title === "Phone" ? (
+                      <div className="space-y-1 text-gray-600">
+                        <p>{contactInfo.phone}</p>
+                        <p>{contactInfo.phone2}</p>
+                      </div>
+                    ) : hasLinks && card.title === "Email" ? (
+                      <a
+                        href={card.links[0]}
+                        className="block text-gray-600 hover:text-sky-600 transition-colors"
+                      >
+                        {card.value}
+                      </a>
+                    ) : (
+                      <p className="text-gray-600">{card.value}</p>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>
