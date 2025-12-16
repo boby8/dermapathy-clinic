@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Instagram, Facebook } from "lucide-react";
 import { WhatsAppLink } from "@/components/whatsapp-button";
+import { InstagramLink } from "@/components/instagram-button";
+import { FacebookLink } from "@/components/facebook-button";
 
 export function Footer() {
   return (
@@ -109,6 +111,22 @@ export function Footer() {
                     Chat on WhatsApp
                   </span>
                 </WhatsAppLink>
+              </li>
+              <li>
+                <InstagramLink>
+                  <span className="flex items-center gap-2 hover:text-pink-600 transition-colors cursor-pointer">
+                    <Instagram className="h-4 w-4" />
+                    Follow on Instagram
+                  </span>
+                </InstagramLink>
+              </li>
+              <li>
+                <FacebookLink>
+                  <span className="flex items-center gap-2 hover:text-[#1877F2] transition-colors cursor-pointer">
+                    <Facebook className="h-4 w-4" />
+                    Like on Facebook
+                  </span>
+                </FacebookLink>
               </li>
               <li>
                 <a
