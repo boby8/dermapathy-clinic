@@ -31,17 +31,21 @@ export default function Treatments() {
             Our Treatments
           </h1>
           <p className="text-lg text-gray-600">
-            Comprehensive dermatology solutions for all your needs
+            A one-stop solution for the treatment of skin, hair, nails, sexual
+            disorders and leprosy
           </p>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="mb-8 grid w-full grid-cols-2 md:grid-cols-5">
+          <TabsList className="mb-8 grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
             <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="skin">Skin</TabsTrigger>
             <TabsTrigger value="hair">Hair</TabsTrigger>
             <TabsTrigger value="laser">Laser</TabsTrigger>
-            <TabsTrigger value="cosmetic">Cosmetic Dermatology</TabsTrigger>
+            <TabsTrigger value="cosmetic">Cosmetic</TabsTrigger>
+            <TabsTrigger value="nails">Nails</TabsTrigger>
+            <TabsTrigger value="sexual">Sexual Disorders</TabsTrigger>
+            <TabsTrigger value="leprosy">Leprosy</TabsTrigger>
           </TabsList>
 
           <TabsContent value={activeTab} className="mt-0">

@@ -36,9 +36,31 @@ export const treatments = {
       description: "Painless, long-lasting hair removal for all skin types.",
     },
     {
+      title: "Tattoo Removal",
+      category: "laser",
+      description: "Advanced laser technology for safe tattoo removal.",
+    },
+    {
       title: "Hydrafacial",
       category: "cosmetic",
       description: "Deep cleansing and hydration treatment.",
+    },
+    {
+      title: "Nail Diseases Treatment",
+      category: "nails",
+      description:
+        "Treatment for twenty nails dystrophy, onychomycosis, ingrown toe nail, etc.",
+    },
+    {
+      title: "Sexual Disorders",
+      category: "sexual",
+      description:
+        "Treatment for sexually transmitted diseases, secondary syphilis, vaginal discharge, etc.",
+    },
+    {
+      title: "Leprosy Treatment",
+      category: "leprosy",
+      description: "Comprehensive care and treatment for leprosy patients.",
     },
   ],
   skin: [
@@ -79,6 +101,26 @@ export const treatments = {
     {
       title: "Hydrafacial",
       description: "Deep cleansing and hydration treatment.",
+    },
+  ],
+  nails: [
+    {
+      title: "Nail Diseases Treatment",
+      description:
+        "Treatment for twenty nails dystrophy, onychomycosis, ingrown toe nail, etc.",
+    },
+  ],
+  sexual: [
+    {
+      title: "Sexual Disorders",
+      description:
+        "Treatment for sexually transmitted diseases, secondary syphilis, vaginal discharge, etc.",
+    },
+  ],
+  leprosy: [
+    {
+      title: "Leprosy Treatment",
+      description: "Comprehensive care and treatment for leprosy patients.",
     },
   ],
 };

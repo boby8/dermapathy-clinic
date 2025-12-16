@@ -8,45 +8,51 @@ import {
   Shield,
   Sparkles,
   Heart,
+  DollarSign,
+  GraduationCap,
+  CheckCircle,
+  Sparkles as SparklesIcon,
+  Droplet,
+  FileCheck,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
   {
-    icon: Users,
-    value: "5000+",
-    label: "Happy Patients",
-    description: "Proven expertise in advanced dermatology procedures",
+    icon: DollarSign,
+    value: "Very",
+    label: "Affordable Cost",
+    description: "World-class patient care at very affordable prices",
   },
   {
-    icon: Stethoscope,
-    value: "100%",
-    label: "Doctor-Led",
-    description: "No technicians, no nurses performing procedures",
+    icon: GraduationCap,
+    value: "Highly",
+    label: "Qualified Dermatologists",
+    description: "Expert medical dermatologists with extensive experience",
+  },
+  {
+    icon: CheckCircle,
+    value: "US-FDA",
+    label: "Approved Lasers",
+    description: "All equipment meets best international standards",
   },
   {
     icon: Award,
-    value: "30+",
-    label: "Advanced Treatments",
-    description: "High-quality, natural results with latest technology",
+    value: "World",
+    label: "Class Treatments",
+    description: "Premium quality care with latest technology",
   },
   {
-    icon: Shield,
-    value: "Zero",
-    label: "Medications Post-Procedure",
-    description: "Minimal downtime and no long-term dependency",
+    icon: Droplet,
+    value: "Most",
+    label: "Hygienic Clinic",
+    description: "Maintaining highest standards of cleanliness and safety",
   },
   {
-    icon: Sparkles,
-    value: "10+",
-    label: "Years Experience",
-    description: "Specialist in complex cases & high-density results",
-  },
-  {
-    icon: Heart,
-    value: "Premium",
-    label: "Care & Service",
-    description: "Personalized attention for every patient",
+    icon: FileCheck,
+    value: "Highly",
+    label: "Standardized Protocols",
+    description: "Consistent, proven treatment protocols for best results",
   },
 ];
 
@@ -107,7 +113,3 @@ export function WhyChooseSection() {
     </section>
   );
 }
-
-
-
-
