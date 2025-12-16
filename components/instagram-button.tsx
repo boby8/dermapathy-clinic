@@ -12,7 +12,7 @@ export function InstagramButton() {
       href={instagramUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-pink-500/50"
+      className="fixed bottom-28 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-pink-500/50"
       aria-label="Follow us on Instagram"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}

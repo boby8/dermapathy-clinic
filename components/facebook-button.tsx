@@ -12,14 +12,13 @@ export function FacebookButton() {
       href={facebookUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#1877F2] text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-blue-500/50"
+      className="fixed bottom-[200px] right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#1877F2] text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-blue-500/50"
       aria-label="Follow us on Facebook"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ delay: 0.2 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      style={{ bottom: "5.5rem" }}
     >
       <Facebook className="h-7 w-7" />
     </motion.a>
@@ -51,4 +50,3 @@ export function FacebookLink({
     </a>
   );
 }
-

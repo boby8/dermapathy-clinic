@@ -31,9 +31,6 @@ export function WhatsAppButton() {
       whileTap={{ scale: 0.95 }}
     >
       <MessageCircle className="h-7 w-7" />
-      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
-        1
-      </span>
     </motion.a>
   );
 }
