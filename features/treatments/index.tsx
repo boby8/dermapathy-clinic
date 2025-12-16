@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -23,10 +24,44 @@ export default function Treatments() {
     return treatments[activeTab as keyof typeof treatments] || [];
   };
 
+  // Treatment images mapping
+  const treatmentImages: Record<string, string> = {
+    "Chemical Peels":
+      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop",
+    "Laser Toning":
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
+    "Hair PRP":
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop",
+    "Acne Scar Treatment":
+      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=300&fit=crop",
+    "Hair Transplant":
+      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop",
+    "Botox & Fillers":
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
+    "Laser Hair Removal":
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
+    "Tattoo Removal":
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
+    Hydrafacial:
+      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=300&fit=crop",
+    "Nail Diseases Treatment":
+      "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&h=300&fit=crop",
+    "Sexual Disorders":
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
+    "Leprosy Treatment":
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
+  };
+
   return (
     <div className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
           <h1 className="mb-4 text-4xl font-bold text-gray-900">
             Our Treatments
           </h1>
@@ -34,7 +69,7 @@ export default function Treatments() {
             A one-stop solution for the treatment of skin, hair, nails, sexual
             disorders and leprosy
           </p>
-        </div>
+        </motion.div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="mb-8 grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
@@ -49,23 +84,66 @@ export default function Treatments() {
           </TabsList>
 
           <TabsContent value={activeTab} className="mt-0">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {getTreatments().map((treatment, index) => (
-                <Card key={index} className="transition-shadow hover:shadow-lg">
-                  <CardHeader>
-                    <CardTitle>{treatment.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="mb-4">
-                      {treatment.description}
-                    </CardDescription>
-                    <Button variant="outline" asChild>
-                      <Link href="/appointment">Book Consultation</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+              >
+                {getTreatments().map((treatment, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                  >
+                    <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-xl">
+                      <div className="relative h-48 w-full overflow-hidden">
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          <Image
+                            src={
+                              treatmentImages[treatment.title] ||
+                              "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop"
+                            }
+                            alt={treatment.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </motion.div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                            {treatment.title}
+                          </h3>
+                        </div>
+                      </div>
+                      <CardHeader>
+                        <CardDescription className="text-base">
+                          {treatment.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Button variant="outline" asChild className="w-full">
+                            <Link href="/appointment">Book Consultation</Link>
+                          </Button>
+                        </motion.div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </TabsContent>
         </Tabs>
       </div>
