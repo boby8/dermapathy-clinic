@@ -12,7 +12,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { treatments } from "./constants";
+import { treatments, treatmentTabs, treatmentImages } from "./constants";
 
 export default function Treatments() {
   const [activeTab, setActiveTab] = useState("all");
@@ -22,34 +22,6 @@ export default function Treatments() {
       return treatments.all;
     }
     return treatments[activeTab as keyof typeof treatments] || [];
-  };
-
-  // Treatment images mapping
-  const treatmentImages: Record<string, string> = {
-    "Chemical Peels":
-      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop",
-    "Laser Toning":
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
-    "Hair PRP":
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop",
-    "Acne Scar Treatment":
-      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=300&fit=crop",
-    "Hair Transplant":
-      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop",
-    "Botox & Fillers":
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
-    "Laser Hair Removal":
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop",
-    "Tattoo Removal":
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
-    Hydrafacial:
-      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=300&fit=crop",
-    "Nail Diseases Treatment":
-      "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&h=300&fit=crop",
-    "Sexual Disorders":
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
-    "Leprosy Treatment":
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
   };
 
   return (
@@ -73,14 +45,11 @@ export default function Treatments() {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="mb-8 grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="skin">Skin</TabsTrigger>
-            <TabsTrigger value="hair">Hair</TabsTrigger>
-            <TabsTrigger value="laser">Laser</TabsTrigger>
-            <TabsTrigger value="cosmetic">Cosmetic</TabsTrigger>
-            <TabsTrigger value="nails">Nails</TabsTrigger>
-            <TabsTrigger value="sexual">Sexual Disorders</TabsTrigger>
-            <TabsTrigger value="leprosy">Leprosy</TabsTrigger>
+            {treatmentTabs.map((tab) => (
+              <TabsTrigger key={tab.value} value={tab.value}>
+                {tab.label}
+              </TabsTrigger>
+            ))}
           </TabsList>
 
           <TabsContent value={activeTab} className="mt-0">

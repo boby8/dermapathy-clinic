@@ -151,7 +151,7 @@ export default function Contact() {
                           item.title === "WhatsApp"
                             ? "bg-[#25D366] text-white"
                             : item.title === "Instagram"
-                            ? "bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white"
+                            ? "bg-linear-to-br from-purple-600 via-pink-600 to-orange-500 text-white"
                             : item.title === "Facebook"
                             ? "bg-[#1877F2] text-white"
                             : "bg-sky-100 text-sky-600"

@@ -1,15 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { contactInfo } from "@/features/contact/constants";
 
+// Simple HTML escape function to prevent XSS
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, message } = body;
+    const { name, email, phone, subject, message, preferredTime } = body;
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !subject || !message) {
       return NextResponse.json(
-        { error: "All fields are required" },
+        { error: "Name, email, subject, and message are required" },
         { status: 400 }
       );
     }
@@ -38,13 +50,16 @@ export async function POST(request: NextRequest) {
           from: "Dermapathy Clinic <onboarding@resend.dev>", // Replace with your verified domain
           to: [contactInfo.email], // Sends to clinic email
           replyTo: email, // User's email for replies
-          subject: `New Contact Form Submission from ${name}`,
+          subject: `New Contact Form: ${subject}`,
           html: `
             <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+            ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ""}
+            <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
+            ${preferredTime ? `<p><strong>Preferred Time:</strong> ${escapeHtml(preferredTime)}</p>` : ""}
             <p><strong>Message:</strong></p>
-            <p>${message.replace(/\n/g, "<br>")}</p>
+            <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
             <hr>
             <p><small>This message was sent from the Dermapathy website contact form.</small></p>
           `,
@@ -53,6 +68,9 @@ New Contact Form Submission
 
 Name: ${name}
 Email: ${email}
+${phone ? `Phone: ${phone}` : ""}
+Subject: ${subject}
+${preferredTime ? `Preferred Time: ${preferredTime}` : ""}
 
 Message:
 ${message}
@@ -74,14 +92,18 @@ This message was sent from the Dermapathy website contact form.
       );
     }
 
-    // Option 2: Fallback - Log to console (for development)
-    // In production, you should set up Resend or another email service
-    console.log("=== CONTACT FORM SUBMISSION ===");
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Message:", message);
-    console.log("Should be sent to:", contactInfo.email);
-    console.log("================================");
+    // Option 2: Fallback - Log to console (for development only)
+    if (process.env.NODE_ENV === "development") {
+      console.log("=== CONTACT FORM SUBMISSION ===");
+      console.log("Name:", name);
+      console.log("Email:", email);
+      console.log("Phone:", phone || "Not provided");
+      console.log("Subject:", subject);
+      console.log("Preferred Time:", preferredTime || "Not specified");
+      console.log("Message:", message);
+      console.log("Should be sent to:", contactInfo.email);
+      console.log("================================");
+    }
 
     // For now, return success (you can set up Resend later)
     return NextResponse.json(

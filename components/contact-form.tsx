@@ -16,21 +16,30 @@ import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
+  subject?: string;
   message?: string;
+  preferredTime?: string;
   submit?: string;
 }
 
 interface FormData {
   name: string;
   email: string;
+  phone: string;
+  subject: string;
   message: string;
+  preferredTime: string;
 }
 
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    phone: "",
+    subject: "",
     message: "",
+    preferredTime: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,6 +48,12 @@ export function ContactForm() {
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone: string): boolean => {
+    if (!phone.trim()) return true; // Optional field
+    const phoneRegex = /^(\+91[\s-]?)?[6-9]\d{9}$/;
+    return phoneRegex.test(phone.replace(/\s/g, ""));
   };
 
   const validateForm = (): boolean => {
@@ -54,6 +69,16 @@ export function ContactForm() {
       newErrors.email = "Email address is required";
     } else if (!validateEmail(formData.email)) {
       newErrors.email = "Please enter a valid email address";
+    }
+
+    if (formData.phone.trim() && !validatePhone(formData.phone)) {
+      newErrors.phone = "Please enter a valid Indian phone number";
+    }
+
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+    } else if (formData.subject.trim().length < 3) {
+      newErrors.subject = "Subject must be at least 3 characters";
     }
 
     if (!formData.message.trim()) {
@@ -102,7 +127,14 @@ export function ContactForm() {
       }
 
       setIsSuccess(true);
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+        preferredTime: "",
+      });
 
       setTimeout(() => {
         setIsSuccess(false);
@@ -218,6 +250,70 @@ export function ContactForm() {
             )}
           </div>
 
+          {/* Phone Field */}
+          <div>
+            <label
+              htmlFor="contact-phone"
+              className="mb-2 block text-sm font-medium text-slate-900"
+            >
+              Phone Number <span className="text-slate-500 text-xs">(Optional)</span>
+            </label>
+            <Input
+              id="contact-phone"
+              name="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="+91 9999999999"
+              className={
+                errors.phone ? "border-red-500 focus-visible:ring-red-500" : ""
+              }
+              aria-invalid={!!errors.phone}
+              aria-describedby={errors.phone ? "phone-error" : undefined}
+            />
+            {errors.phone && (
+              <p
+                id="phone-error"
+                className="mt-1.5 text-sm text-red-600"
+                role="alert"
+              >
+                {errors.phone}
+              </p>
+            )}
+          </div>
+
+          {/* Subject Field */}
+          <div>
+            <label
+              htmlFor="contact-subject"
+              className="mb-2 block text-sm font-medium text-slate-900"
+            >
+              Subject <span className="text-red-500">*</span>
+            </label>
+            <Input
+              id="contact-subject"
+              name="subject"
+              type="text"
+              value={formData.subject}
+              onChange={handleChange}
+              placeholder="What is this regarding?"
+              className={
+                errors.subject ? "border-red-500 focus-visible:ring-red-500" : ""
+              }
+              aria-invalid={!!errors.subject}
+              aria-describedby={errors.subject ? "subject-error" : undefined}
+            />
+            {errors.subject && (
+              <p
+                id="subject-error"
+                className="mt-1.5 text-sm text-red-600"
+                role="alert"
+              >
+                {errors.subject}
+              </p>
+            )}
+          </div>
+
           {/* Message Field */}
           <div>
             <label
@@ -257,6 +353,31 @@ export function ContactForm() {
                 {formData.message.length}/1000
               </p>
             </div>
+          </div>
+
+          {/* Preferred Time Field */}
+          <div>
+            <label
+              htmlFor="contact-preferred-time"
+              className="mb-2 block text-sm font-medium text-slate-900"
+            >
+              Preferred Contact Time <span className="text-slate-500 text-xs">(Optional)</span>
+            </label>
+            <select
+              id="contact-preferred-time"
+              name="preferredTime"
+              value={formData.preferredTime}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, preferredTime: e.target.value }))
+              }
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              <option value="">Select preferred time</option>
+              <option value="morning">Morning (9 AM - 12 PM)</option>
+              <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+              <option value="evening">Evening (4 PM - 7 PM)</option>
+              <option value="anytime">Anytime</option>
+            </select>
           </div>
 
           {/* Submit Button */}
